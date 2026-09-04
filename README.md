@@ -1,0 +1,2 @@
+# nuuma-shopify-theme
+main
