@@ -1,5 +1,3 @@
-# nuuma-shopify-theme
-main
 assets/
 config/
 layout/
