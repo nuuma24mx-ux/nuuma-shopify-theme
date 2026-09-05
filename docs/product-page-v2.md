@@ -22,26 +22,26 @@ Apps preservadas: Trust Badges Bear (bloque del producto), Shopify Inbox,
 Judge.me, Planet Discounts/Upsells (smart cart y widgets) y Wizio Bundle.
 No se elimina ningún bloque existente ni se modifica `config/settings_data.json`.
 
+## Referencia de diseño
+
+Se revisó la [página de CAFANA](https://cafanahome.com/products/aceite-para-difusor-eclat-citrus-inspirado-en-champagne-toast-bath-and-body-works-copia): galería con miniaturas, título ligero, introducción con perfil aromático, desplegables de beneficios/uso/cuidados, selector desplegable y controles rectangulares. Se adapta esa composición a NUUMA sin copiar imágenes, textos comerciales, marcas, afirmaciones ni upsells. Se conserva el requisito de NUUMA de mostrar precio y compra antes de la descripción extensa.
+
 ## Comportamiento
 
 Orden del bloque de información: título, rating real cuando existe, precio,
 beneficio y datos confirmados, variantes, cantidad, botones de compra,
-mensaje de envío/soporte cuando existe, Trust Badges Bear, descripción larga,
-proveedor y compartir. La galería nativa sigue antes de la información en móvil.
+mensaje de envío/soporte cuando existe, Trust Badges Bear, descripción completa en un desplegable, beneficios/uso/cuidados opcionales en desplegables, proveedor y compartir. La galería nativa sigue antes de la información en móvil y ahora muestra miniaturas. El selector utiliza el modo dropdown nativo.
 
 El diseño v2 se activa en la plantilla de producto mediante el setting
 `enable_nuuma_product_v2`. Por defecto es falso para otras instancias de la sección.
 Desactivar el setting revierte los estilos, pero no el orden ni los nuevos bloques;
 para revertir toda la propuesta se debe revertir el cambio completo.
 
-Se reducen espacios iniciales en móvil, se limita la altura de imágenes que ya
-utilizan la opción nativa de ajuste al viewport, y se amplían precio, campos y
-objetivos táctiles. Las variantes tipo botón tienen al menos 44px de alto y el CTA
-48px. La galería mantiene zoom y selección de medios nativos. No se puede garantizar
+Se usan títulos de peso 400, controles rectangulares, introducción en texto corrido y separadores finos en los desplegables. Se conserva la altura de medios nativa y se elimina el límite compacto de la primera propuesta. Las variantes tipo botón, si se configuran, conservan al menos 44px de alto y el CTA 52px. La galería mantiene zoom y selección de medios nativos. No se puede garantizar
 que todo el bloque quepa en la primera pantalla: depende del dispositivo, cabecera,
 título, cantidad de variantes, apps y contenido real.
 
-Las seis declaraciones modificadas de `base.css` usan variables CSS con los mismos
+Las declaraciones modificadas de `base.css` usan variables CSS con los mismos
 valores de reserva que antes. Las variables se definen dentro de `.nuuma-product-v2`.
 No se añade ningún `!important`; se conservan los ya existentes.
 
@@ -54,6 +54,11 @@ contenedores vacíos. Los textos se escapan como texto, sin ejecutar HTML.
 
 | Namespace y key | Tipo | Uso |
 | --- | --- | --- |
+| `nuuma.scent_family` | `single_line_text_field` | Perfil o estilo aromático confirmado, opcional |
+| `nuuma.scent_notes` | `single_line_text_field` | Notas aromáticas confirmadas, opcionales |
+| `nuuma.benefits` | `multi_line_text_field` | Contenido del desplegable de beneficios |
+| `nuuma.usage` | `multi_line_text_field` | Instrucciones confirmadas de uso |
+| `nuuma.care` | `multi_line_text_field` | Cuidados y precauciones confirmados |
 | `nuuma.primary_benefit` | `single_line_text_field` | Beneficio principal breve |
 | `nuuma.coverage_m2` | `number_decimal` | Área en m², solo visible si es mayor que cero |
 | `nuuma.app_scheduling` | `single_line_text_field` | Programación mediante app, solo cuando aplica |
@@ -79,11 +84,11 @@ Referencia: [metafields en Liquid](https://shopify.dev/docs/api/liquid/objects/m
 - La CLI `@shopify/cli` 4.7.1 falló al arrancar con `uv_os_get_passwd / ENOMEM`;
   por eso se ejecutó directamente el motor oficial, sin autofix ni reglas desactivadas.
 - Renderizados locales con LiquidJS: metafields ausentes, cobertura cero/negativa,
-  cobertura decimal, datos parciales, escape de HTML y mensaje de confianza.
+  cobertura decimal, datos parciales, escape de HTML, perfil aromático, mensaje de confianza y desplegables ausentes/parciales con saltos de línea.
 - Comprobación estructural de template/schema, claves de idiomas y conservación
   exacta de todos los bloques originales y archivos de lógica comercial.
 - Fixture sintético en Chrome a 320, 390, 768 y 1440px: sin desbordamiento horizontal,
-  variantes de al menos 44px, CTA de 48px, cantidad de 16px y precio de 20px.
+  selector de al menos 44px, CTA de 52px, título de peso 400 y cuatro desplegables nativos con apertura/cierre por Enter y Espacio. Se comprueba también que galería e información estén en dos columnas en escritorio.
   Es una prueba de CSS con datos de prueba locales; no es una vista previa de Shopify
   ni una validación de apps o compra real.
 - `git diff --check` para los cambios.
@@ -129,7 +134,8 @@ de la conexión a GitHub se habilitó al instalar ChatGPT Codex Connector en la 
    no realizar cargos reales.
 7. Trust Badges Bear, Judge.me, Inbox, Planet (smart cart y upsell) y Wizio: visualización,
    bundles, descuentos y que un clic no agregue el producto dos veces.
-8. Editor: mover/seleccionar los bloques nuevos, desactivar el diseño y verificar otras
+8. Desplegables: sin metafields no aparecen filas vacías; comprobar contenido, saltos de línea y apertura/cierre por toque, Enter y Espacio. La descripción conserva todo su HTML dentro del desplegable.
+9. Editor: mover/seleccionar los bloques nuevos, desactivar el diseño y verificar otras
    plantillas, featured product y quick add sin regresiones de estilos.
 
 ## Revisión en GitHub

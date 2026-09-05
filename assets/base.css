@@ -3673,7 +3673,7 @@ h1, .h1,
 .slideshow__heading,
 .page-title {
   font-family: var(--nu-font) !important;
-  font-weight: 700 !important;
+  font-weight: var(--nu-product-heading-weight, 700) !important;
   font-size: var(--nu-product-heading-size, clamp(36px, 5.5vw, 72px)) !important;
   line-height: 1.07 !important;
   letter-spacing: -0.01em !important;
@@ -3752,8 +3752,8 @@ input[type="submit"] {
   font-family: var(--nu-font) !important;
   font-size: var(--nu-product-button-size, 10px) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.2em !important;
-  text-transform: uppercase !important;
+  letter-spacing: var(--nu-product-control-spacing, 0.2em) !important;
+  text-transform: var(--nu-product-control-case, uppercase) !important;
 }
 
 /* ── PRECIOS ── */
@@ -3794,8 +3794,8 @@ input[type="submit"] {
   font-family: var(--nu-font) !important;
   font-size: var(--nu-product-option-size, 10px) !important;
   font-weight: 500 !important;
-  letter-spacing: 0.18em !important;
-  text-transform: uppercase !important;
+  letter-spacing: var(--nu-product-control-spacing, 0.18em) !important;
+  text-transform: var(--nu-product-control-case, uppercase) !important;
 }
 
 /* ── CARRITO ── */
@@ -3954,7 +3954,7 @@ select,
 @media (max-width: 749px) {
   h1, .h1, .banner__heading {
     font-size: var(--nu-product-heading-size, 34px) !important;
-    font-weight: 700 !important;
+    font-weight: var(--nu-product-heading-weight, 700) !important;
   }
   h2, .h2, .section__title {
     font-size: 26px !important;

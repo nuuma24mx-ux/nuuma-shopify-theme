@@ -106,7 +106,7 @@
   },
   "products": {
     "product": {
-      "nuuma": {"coverage":"Κάλυψη","app_scheduling":"Προγραμματισμός μέσω εφαρμογής","compatibility":"Συμβατότητα","duration":"Διάρκεια"},
+      "nuuma":{"benefits":"Οφέλη προϊόντος","usage":"Τρόπος χρήσης","care":"Φροντίδα και προφυλάξεις","scent_family":"Αρωματικό προφίλ","scent_notes":"Αρωματικές νότες","coverage":"Κάλυψη","app_scheduling":"Προγραμματισμός μέσω εφαρμογής","compatibility":"Συμβατότητα","duration":"Διάρκεια"},
       "add_to_cart": "Προσθήκη στο καλάθι",
       "description": "Περιγραφή",
       "on_sale": "Έκπτωση",

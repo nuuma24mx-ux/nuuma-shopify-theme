@@ -106,7 +106,7 @@
   },
   "products": {
     "product": {
-      "nuuma": {"coverage":"Покритие","app_scheduling":"Програмиране чрез приложение","compatibility":"Съвместимост","duration":"Продължителност"},
+      "nuuma":{"benefits":"Предимства на продукта","usage":"Начин на употреба","care":"Грижа и предпазни мерки","scent_family":"Ароматен профил","scent_notes":"Ароматни нотки","coverage":"Покритие","app_scheduling":"Програмиране чрез приложение","compatibility":"Съвместимост","duration":"Продължителност"},
       "add_to_cart": "Добавяне към количката",
       "description": "Описание",
       "on_sale": "Разпродажба",

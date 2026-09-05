@@ -9,8 +9,16 @@
   assign compatibility = product.metafields.nuuma.compatibility.value
   assign duration = product.metafields.nuuma.duration.value
   assign features = product.metafields.nuuma.features.value
+  assign scent_family = product.metafields.nuuma.scent_family.value
+  assign scent_notes = product.metafields.nuuma.scent_notes.value
 -%}
 {%- capture facts -%}
+  {%- if scent_family != blank -%}
+    <div><dt>{{ 'products.product.nuuma.scent_family' | t }}</dt><dd>{{ scent_family | escape }}</dd></div>
+  {%- endif -%}
+  {%- if scent_notes != blank -%}
+    <div><dt>{{ 'products.product.nuuma.scent_notes' | t }}</dt><dd>{{ scent_notes | escape }}</dd></div>
+  {%- endif -%}
   {%- if coverage != blank and coverage > 0 -%}
     <div><dt>{{ 'products.product.nuuma.coverage' | t }}</dt><dd>{{ coverage | escape }} m²</dd></div>
   {%- endif -%}
