@@ -106,6 +106,7 @@
   },
   "products": {
     "product": {
+      "nuuma":{"benefits":"Produktfordele","usage":"Anvendelse","care":"Pleje og forholdsregler","scent_family":"Duftprofil","scent_notes":"Duftnoter","coverage":"Dækning","app_scheduling":"Planlægning via app","compatibility":"Kompatibilitet","duration":"Varighed"},
       "add_to_cart": "Læg i indkøbskurv",
       "description": "Beskrivelse",
       "on_sale": "Udsalg",

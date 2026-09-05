@@ -1,0 +1,51 @@
+{% comment %}
+  Product-level facts only: no inferred values or variant-specific fallback.
+  Metafield definitions and authoring constraints: docs/product-page-v2.md.
+{% endcomment %}
+{%- liquid
+  assign benefit = product.metafields.nuuma.primary_benefit.value
+  assign coverage = product.metafields.nuuma.coverage_m2.value
+  assign app_scheduling = product.metafields.nuuma.app_scheduling.value
+  assign compatibility = product.metafields.nuuma.compatibility.value
+  assign duration = product.metafields.nuuma.duration.value
+  assign features = product.metafields.nuuma.features.value
+  assign scent_family = product.metafields.nuuma.scent_family.value
+  assign scent_notes = product.metafields.nuuma.scent_notes.value
+-%}
+{%- capture facts -%}
+  {%- if scent_family != blank -%}
+    <div><dt>{{ 'products.product.nuuma.scent_family' | t }}</dt><dd>{{ scent_family | escape }}</dd></div>
+  {%- endif -%}
+  {%- if scent_notes != blank -%}
+    <div><dt>{{ 'products.product.nuuma.scent_notes' | t }}</dt><dd>{{ scent_notes | escape }}</dd></div>
+  {%- endif -%}
+  {%- if coverage != blank and coverage > 0 -%}
+    <div><dt>{{ 'products.product.nuuma.coverage' | t }}</dt><dd>{{ coverage | escape }} m²</dd></div>
+  {%- endif -%}
+  {%- if app_scheduling != blank -%}
+    <div><dt>{{ 'products.product.nuuma.app_scheduling' | t }}</dt><dd>{{ app_scheduling | escape }}</dd></div>
+  {%- endif -%}
+  {%- if compatibility != blank -%}
+    <div><dt>{{ 'products.product.nuuma.compatibility' | t }}</dt><dd>{{ compatibility | escape }}</dd></div>
+  {%- endif -%}
+  {%- if duration != blank -%}
+    <div><dt>{{ 'products.product.nuuma.duration' | t }}</dt><dd>{{ duration | escape }}</dd></div>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if benefit != blank or facts != blank or features != blank -%}
+  <div class="nuuma-product-highlights" {{ block.shopify_attributes }}>
+    {%- if benefit != blank -%}
+      <div class="nuuma-product-highlights__benefit">{{ benefit | escape }}</div>
+    {%- endif -%}
+    {%- if facts != blank -%}
+      <dl class="nuuma-product-highlights__facts">{{ facts }}</dl>
+    {%- endif -%}
+    {%- if features != blank -%}
+      <ul class="nuuma-product-highlights__features">
+        {%- for feature in features -%}
+          <li>{{ feature | escape }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+{%- endif -%}
