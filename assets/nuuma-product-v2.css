@@ -1,0 +1,105 @@
+/* Scoped to the opt-in main product section; native controls and states stay intact. */
+.nuuma-product-v2 {
+  --nu-product-heading-size: clamp(2.6rem, 3vw, 4rem);
+  --nu-product-price-size: 2rem;
+  --nu-product-button-size: 1.4rem;
+  --nu-product-option-size: 1.2rem;
+  --nu-product-input-size: 1.6rem;
+}
+
+.nuuma-product-v2 .product__info-container > * + * {
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.nuuma-product-v2 .product__title {
+  margin-bottom: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.nuuma-product-v2 .product-form__input,
+.nuuma-product-v2 .product-form__buttons {
+  max-width: none;
+}
+
+.nuuma-product-v2 .product-form__input {
+  min-width: 0;
+}
+
+.nuuma-product-v2 .product-form__input--pill input[type='radio'] + label {
+  min-height: 4.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.nuuma-product-v2 .product-form__submit {
+  min-height: 4.8rem;
+}
+
+.nuuma-product-highlights {
+  overflow-wrap: anywhere;
+}
+
+.nuuma-product-highlights__benefit {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.nuuma-product-highlights__facts {
+  margin: 1rem 0 0;
+}
+
+.nuuma-product-highlights__facts > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 0.8rem;
+  padding-block: 0.4rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.nuuma-product-highlights__facts dt {
+  font-weight: 500;
+}
+
+.nuuma-product-highlights__facts dd {
+  margin: 0;
+}
+
+.nuuma-product-highlights__features {
+  margin: 0.8rem 0 0;
+  padding-inline-start: 1.8rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.nuuma-product-reassurance {
+  padding-block: 1rem;
+  border-block: 0.1rem solid rgba(var(--color-foreground), 0.15);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.nuuma-product-v2 .product__description {
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.15);
+}
+
+@media screen and (max-width: 749px) {
+  product-info.nuuma-product-v2 {
+    padding-top: 1.6rem;
+  }
+
+  .nuuma-product-v2 .product__info-wrapper {
+    padding-top: 1.2rem;
+  }
+
+  .nuuma-product-v2 .product-media-container.constrain-height.media-type-image {
+    --constrained-height: clamp(18rem, 28svh, 26rem);
+  }
+}

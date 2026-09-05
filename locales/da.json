@@ -106,6 +106,7 @@
   },
   "products": {
     "product": {
+      "nuuma": {"coverage":"Dækning","app_scheduling":"Planlægning via app","compatibility":"Kompatibilitet","duration":"Varighed"},
       "add_to_cart": "Læg i indkøbskurv",
       "description": "Beskrivelse",
       "on_sale": "Udsalg",

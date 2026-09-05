@@ -106,6 +106,7 @@
   },
   "products": {
     "product": {
+      "nuuma": {"coverage":"Κάλυψη","app_scheduling":"Προγραμματισμός μέσω εφαρμογής","compatibility":"Συμβατότητα","duration":"Διάρκεια"},
       "add_to_cart": "Προσθήκη στο καλάθι",
       "description": "Περιγραφή",
       "on_sale": "Έκπτωση",
