@@ -99,3 +99,11 @@
 @media screen and (min-width: 750px) {
   .nuuma-product-v2 .product-form__input--dropdown { max-width: 28rem; }
 }
+
+/* Keep product links functional without decorative underlines. */
+.nuuma-product-v2 a,
+.nuuma-product-v2 .link,
+.nuuma-product-v2 .underlined-link,
+.nuuma-product-v2 .product__info-container .rte a {
+  text-decoration: none;
+}
