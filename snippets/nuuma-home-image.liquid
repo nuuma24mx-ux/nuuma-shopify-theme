@@ -1,0 +1,16 @@
+{% comment %}Editable photography with optimized bundled fallback; UI remains HTML.{% endcomment %}
+{% liquid
+  assign image_loading = 'lazy'
+  assign image_priority = 'auto'
+  if eager
+    assign image_loading = 'eager'
+    assign image_priority = 'high'
+  endif
+  assign small_asset = 'nuuma-home-' | append: name | append: '-768.webp'
+  assign large_asset = 'nuuma-home-' | append: name | append: '-1536.webp'
+%}
+{% if image != blank %}
+  {{ image | image_url: width: 2000 | image_tag: widths: '480, 768, 1200, 1536, 2000', sizes: sizes, loading: image_loading, fetchpriority: image_priority, class: 'nu-home__photo' }}
+{% else %}
+  <img class="nu-home__photo" src="{{ large_asset | asset_url }}" srcset="{{ small_asset | asset_url }} 768w, {{ large_asset | asset_url }} 1536w" sizes="{{ sizes }}" width="1536" height="1024" alt="{{ alt | escape }}" loading="{{ image_loading }}" fetchpriority="{{ image_priority }}">
+{% endif %}
