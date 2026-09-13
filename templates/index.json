@@ -421,7 +421,13 @@
         "white_tea",
         "santal"
       ],
-      "settings": {}
+      "settings": {
+        "fragrances_link": "/collections/hoteles",
+        "diffusers_link": "/collections/difusores",
+        "hotel_link": "/collections/coleccion-hotel",
+        "spray_link": "/collections/aromatizante-en-espray",
+        "whatsapp_link": "https://wa.me/523326689207"
+      }
     }
   },
   "order": [
