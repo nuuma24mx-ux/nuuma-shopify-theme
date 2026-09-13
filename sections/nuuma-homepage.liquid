@@ -1,3 +1,9 @@
+{% liquid
+  assign fragrances_link = section.settings.fragrances_link | default: '/collections/hoteles'
+  assign diffusers_link = section.settings.diffusers_link | default: '/collections/difusores'
+  assign hotel_link = section.settings.hotel_link | default: '/collections/coleccion-hotel'
+  assign spray_link = section.settings.spray_link | default: '/collections/aromatizante-en-espray'
+%}
 <div class="nu-home">
   <section class="nu-home__hero" aria-labelledby="NuumaHero-{{ section.id }}">
     {% render 'nuuma-home-image', name: 'hero', image: section.settings.hero_image, eager: true, sizes: '100vw', alt: 'Fragancia y difusor NUUMA en un espacio contemporáneo' %}
@@ -7,8 +13,8 @@
       <h1 id="NuumaHero-{{ section.id }}">{{ section.settings.hero_heading | escape }}</h1>
       <p class="nu-home__intro">{{ section.settings.hero_text | escape }}</p>
       <div class="nu-home__actions">
-        <a class="nu-home__button nu-home__button--white" href="{{ section.settings.fragrances_link }}">Comprar fragancias</a>
-        <a class="nu-home__button nu-home__button--outline" href="{{ section.settings.diffusers_link }}">Ver difusores</a>
+        <a class="nu-home__button nu-home__button--white" href="{{ fragrances_link }}">Comprar fragancias</a>
+        <a class="nu-home__button nu-home__button--outline" href="{{ diffusers_link }}">Ver difusores</a>
       </div>
     </div>
   </section>
@@ -16,7 +22,7 @@
   <section class="nu-home__featured nu-home__container" aria-labelledby="NuumaFeatured-{{ section.id }}">
     <div class="nu-home__section-heading">
       <div><p class="nu-home__eyebrow">{{ section.settings.featured_eyebrow | escape }}</p><h2 id="NuumaFeatured-{{ section.id }}">{{ section.settings.featured_heading | escape }}</h2></div>
-      <a class="nu-home__text-link" href="{{ section.settings.fragrances_link }}">Ver todas las fragancias <span aria-hidden="true">→</span></a>
+      <a class="nu-home__text-link" href="{{ fragrances_link }}">Ver todas las fragancias <span aria-hidden="true">→</span></a>
     </div>
     <ul class="nu-home__products" role="list">
       {% for block in section.blocks %}
@@ -48,18 +54,18 @@
       <p class="nu-home__eyebrow">Hotel &amp; Boutiques</p>
       <h2 id="NuumaHotel-{{ section.id }}">{{ section.settings.hotel_heading | escape }}</h2>
       <p>{{ section.settings.hotel_text | escape }}</p>
-      <a class="nu-home__button" href="{{ section.settings.hotel_link }}">Explorar la colección</a>
+      <a class="nu-home__button" href="{{ hotel_link }}">Explorar la colección</a>
     </div>
   </section>
 
   <div class="nu-home__categories nu-home__container">
     <section class="nu-home__category nu-home__category--dark" aria-labelledby="NuumaDiffusers-{{ section.id }}">
       {% render 'nuuma-home-image', name: 'diffuser', image: section.settings.diffuser_image, sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Difusor cilíndrico negro NUUMA' %}
-      <div class="nu-home__category-copy"><p class="nu-home__eyebrow">Encuentra el tuyo</p><h2 id="NuumaDiffusers-{{ section.id }}">Difusores</h2><a class="nu-home__button nu-home__button--white" href="{{ section.settings.diffusers_link }}">Ver difusores</a></div>
+      <div class="nu-home__category-copy"><p class="nu-home__eyebrow">Encuentra el tuyo</p><h2 id="NuumaDiffusers-{{ section.id }}">Difusores</h2><a class="nu-home__button nu-home__button--white" href="{{ diffusers_link }}">Ver difusores</a></div>
     </section>
     <section class="nu-home__category nu-home__category--light" aria-labelledby="NuumaSpray-{{ section.id }}">
       {% render 'nuuma-home-image', name: 'spray', image: section.settings.spray_image, sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Room spray Santal Maison de NUUMA sobre lino blanco' %}
-      <div class="nu-home__category-copy"><p class="nu-home__eyebrow">Un toque de aroma</p><h2 id="NuumaSpray-{{ section.id }}">Room spray</h2><a class="nu-home__button" href="{{ section.settings.spray_link }}">Comprar room spray</a></div>
+      <div class="nu-home__category-copy"><p class="nu-home__eyebrow">Un toque de aroma</p><h2 id="NuumaSpray-{{ section.id }}">Room spray</h2><a class="nu-home__button" href="{{ spray_link }}">Comprar room spray</a></div>
     </section>
   </div>
 
@@ -76,32 +82,152 @@
   "tag": "section",
   "class": "nuuma-home-section",
   "limit": 1,
-  "enabled_on": {"templates": ["index"]},
+  "enabled_on": {
+    "templates": [
+      "index"
+    ]
+  },
   "max_blocks": 4,
   "settings": [
-    {"type":"header","content":"Portada"},
-    {"type":"image_picker","id":"hero_image","label":"Fotografía de portada"},
-    {"type":"text","id":"hero_eyebrow","label":"Antetítulo","default":"AROMAS QUE HACEN HOGAR"},
-    {"type":"text","id":"hero_heading","label":"Título","default":"Haz de tu espacio un lugar inolvidable."},
-    {"type":"textarea","id":"hero_text","label":"Texto","default":"Descubre fragancias que transforman tus espacios y acompañan tus momentos."},
-    {"type":"url","id":"fragrances_link","label":"Colección de fragancias","default":"/collections/hoteles"},
-    {"type":"url","id":"diffusers_link","label":"Colección de difusores","default":"/collections/difusores"},
-    {"type":"header","content":"Fragancias destacadas"},
-    {"type":"text","id":"featured_eyebrow","label":"Antetítulo","default":"ENCUENTRA TU AROMA"},
-    {"type":"text","id":"featured_heading","label":"Título","default":"Fragancias para recordar"},
-    {"type":"paragraph","content":"Elige hasta cuatro productos en los bloques. Los nombres, fotos, precios y disponibilidad se obtienen de Shopify. Los botones abren el selector nativo de cada producto."},
-    {"type":"header","content":"Hotel & Boutiques"},
-    {"type":"image_picker","id":"hotel_image","label":"Fotografía"},
-    {"type":"text","id":"hotel_heading","label":"Título","default":"Ese aroma que quieres llevar a casa."},
-    {"type":"textarea","id":"hotel_text","label":"Texto","default":"Descubre nuestra colección de fragancias inspiradas en hoteles y boutiques."},
-    {"type":"url","id":"hotel_link","label":"Colección","default":"/collections/coleccion-hotel"},
-    {"type":"header","content":"Categorías"},
-    {"type":"image_picker","id":"diffuser_image","label":"Fotografía de difusor"},
-    {"type":"image_picker","id":"spray_image","label":"Fotografía de room spray"},
-    {"type":"url","id":"spray_link","label":"Colección de room spray","default":"/collections/aromatizante-en-espray"},
-    {"type":"url","id":"whatsapp_link","label":"WhatsApp de atención","default":"https://wa.me/523326689207"}
+    {
+      "type": "header",
+      "content": "Portada"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Fotografía de portada"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Antetítulo",
+      "default": "AROMAS QUE HACEN HOGAR"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Título",
+      "default": "Haz de tu espacio un lugar inolvidable."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Texto",
+      "default": "Descubre fragancias que transforman tus espacios y acompañan tus momentos."
+    },
+    {
+      "type": "url",
+      "id": "fragrances_link",
+      "label": "Colección de fragancias"
+    },
+    {
+      "type": "url",
+      "id": "diffusers_link",
+      "label": "Colección de difusores"
+    },
+    {
+      "type": "header",
+      "content": "Fragancias destacadas"
+    },
+    {
+      "type": "text",
+      "id": "featured_eyebrow",
+      "label": "Antetítulo",
+      "default": "ENCUENTRA TU AROMA"
+    },
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "Título",
+      "default": "Fragancias para recordar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Elige hasta cuatro productos en los bloques. Los nombres, fotos, precios y disponibilidad se obtienen de Shopify. Los botones abren el selector nativo de cada producto."
+    },
+    {
+      "type": "header",
+      "content": "Hotel & Boutiques"
+    },
+    {
+      "type": "image_picker",
+      "id": "hotel_image",
+      "label": "Fotografía"
+    },
+    {
+      "type": "text",
+      "id": "hotel_heading",
+      "label": "Título",
+      "default": "Ese aroma que quieres llevar a casa."
+    },
+    {
+      "type": "textarea",
+      "id": "hotel_text",
+      "label": "Texto",
+      "default": "Descubre nuestra colección de fragancias inspiradas en hoteles y boutiques."
+    },
+    {
+      "type": "url",
+      "id": "hotel_link",
+      "label": "Colección"
+    },
+    {
+      "type": "header",
+      "content": "Categorías"
+    },
+    {
+      "type": "image_picker",
+      "id": "diffuser_image",
+      "label": "Fotografía de difusor"
+    },
+    {
+      "type": "image_picker",
+      "id": "spray_image",
+      "label": "Fotografía de room spray"
+    },
+    {
+      "type": "url",
+      "id": "spray_link",
+      "label": "Colección de room spray"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "WhatsApp de atención"
+    }
   ],
-  "blocks": [{"type":"product","name":"Fragancia","settings":[{"type":"product","id":"product","label":"Producto"}]}],
-  "presets": [{"name":"NUUMA · Inicio premium","blocks":[{"type":"product"},{"type":"product"},{"type":"product"},{"type":"product"}]}]
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Fragancia",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Producto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NUUMA · Inicio premium",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
