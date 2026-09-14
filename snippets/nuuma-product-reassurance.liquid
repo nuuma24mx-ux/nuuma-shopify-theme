@@ -1,0 +1,6 @@
+{%- assign reassurance = product.metafields.nuuma.purchase_reassurance.value -%}
+{%- if reassurance != blank -%}
+  <div class="nuuma-product-reassurance" {{ block.shopify_attributes }}>
+    {{- reassurance | escape -}}
+  </div>
+{%- endif -%}

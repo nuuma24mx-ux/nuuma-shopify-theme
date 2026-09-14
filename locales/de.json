@@ -106,6 +106,7 @@
   },
   "products": {
     "product": {
+      "nuuma":{"benefits":"Produktvorteile","usage":"Anwendung","care":"Pflege und Vorsichtsmaßnahmen","scent_family":"Duftprofil","scent_notes":"Duftnoten","coverage":"Abdeckung","app_scheduling":"Zeitplanung per App","compatibility":"Kompatibilität","duration":"Dauer"},
       "add_to_cart": "In den Warenkorb legen",
       "description": "Beschreibung",
       "on_sale": "Sale",

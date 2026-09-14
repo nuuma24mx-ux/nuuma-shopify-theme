@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="{% if section.settings.enable_nuuma_product_v2 %}nuuma-product-v2 {% endif %}section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -10,6 +10,9 @@
   {% endif %}
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+  {% if section.settings.enable_nuuma_product_v2 %}
+    {{ 'nuuma-product-v2.css' | asset_url | stylesheet_tag }}
+  {% endif %}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
@@ -140,6 +143,12 @@
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
+              {%- when 'nuuma_highlights' -%}
+                {% render 'nuuma-product-highlights', product: product, block: block %}
+              {%- when 'nuuma_reassurance' -%}
+                {% render 'nuuma-product-reassurance', product: product, block: block %}
+              {%- when 'nuuma_details' -%}
+                {% render 'nuuma-product-details', product: product, block: block, section_id: section.id %}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -193,9 +202,21 @@
                 </p>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
-                  </div>
+                  {% if section.settings.enable_nuuma_product_v2 %}
+                    <div class="nuuma-product-details product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                      <details id="NuumaDescription-{{ section.id }}-{{ block.id }}">
+                        <summary>
+                          <span class="nuuma-product-details__title">{{ 'products.product.description' | t }}</span>
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </summary>
+                        <div class="accordion__content rte">{{ product.description }}</div>
+                      </details>
+                    </div>
+                  {% else %}
+                    <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                      {{ product.description }}
+                    </div>
+                  {% endif %}
                 {%- endif -%}
               {%- when 'sku' -%}
                 <p
@@ -730,6 +751,28 @@
   "tag": "section",
   "class": "section",
   "blocks": [
+    {
+      "type": "nuuma_details",
+      "name": "NUUMA · Uso y cuidados",
+      "limit": 1,
+      "settings": [{ "type": "paragraph", "content": "Desplegables con beneficios, modo de uso y cuidados confirmados desde metafields nuuma. Los campos vacíos se ocultan." }]
+    },
+    {
+      "type": "nuuma_highlights",
+      "name": "NUUMA · Beneficios",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Usa metafields de producto del espacio nuuma. Consulta docs/product-page-v2.md. Los datos vacíos no se muestran." }
+      ]
+    },
+    {
+      "type": "nuuma_reassurance",
+      "name": "NUUMA · Envío y soporte",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Muestra nuuma.purchase_reassurance cuando tiene contenido. No añade promesas de envío ni garantías." }
+      ]
+    },
     {
       "type": "@app"
     },
@@ -2077,6 +2120,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_nuuma_product_v2",
+      "label": "Activar diseño de producto NUUMA v2",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",
