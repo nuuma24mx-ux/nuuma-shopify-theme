@@ -29,6 +29,7 @@
         assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
       endif
     -%}
+    <div class="nu-contact-layout"><aside class="nu-contact-intro"><h2>Hablemos.</h2><p>Estamos para ayudarte.</p>{% if section.settings.nuuma_email != blank %}<a href="mailto:{{ section.settings.nuuma_email | escape }}">{{ section.settings.nuuma_email | escape }}</a>{% endif %}{% if section.settings.nuuma_whatsapp != blank %}<a href="{{ section.settings.nuuma_whatsapp }}">WhatsApp {{ section.settings.nuuma_phone | escape }}</a>{% endif %}</aside><div>
     {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
       {%- if form.posted_successfully? -%}
         <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
@@ -132,6 +133,7 @@
         </button>
       </div>
     {%- endform -%}
+    </div></div>
   </div>
 </div>
 
@@ -144,6 +146,9 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+ {"type":"text","id":"nuuma_email","label":"Correo de contacto"},
+ {"type":"text","id":"nuuma_phone","label":"Teléfono de contacto"},
+ {"type":"url","id":"nuuma_whatsapp","label":"Enlace WhatsApp"},
     {
       "type": "inline_richtext",
       "id": "heading",
