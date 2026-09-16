@@ -33,7 +33,8 @@
         "image_behavior": "none",
         "show_text_below": true,
         "accessibility_info": "Slideshow about our brand"
-      }
+      },
+      "disabled": true
     },
     "rich-text-0": {
       "type": "rich-text",
@@ -44,7 +45,8 @@
         "full_width": true,
         "padding_top": 0,
         "padding_bottom": 60
-      }
+      },
+      "disabled": true
     },
     "main": {
       "type": "main-list-collections",
@@ -54,7 +56,8 @@
         "image_ratio": "portrait",
         "columns_desktop": 4,
         "columns_mobile": "2"
-      }
+      },
+      "disabled": true
     },
     "rich-text-1": {
       "type": "rich-text",
@@ -65,10 +68,52 @@
         "full_width": true,
         "padding_top": 0,
         "padding_bottom": 60
-      }
+      },
+      "disabled": true
+    },
+    "nuuma_directory": {
+      "type": "nuuma-collections",
+      "settings": {},
+      "blocks": {
+        "fragrances": {
+          "type": "collection",
+          "settings": {
+            "collection": "hoteles",
+            "photo": "hero"
+          }
+        },
+        "diffusers": {
+          "type": "collection",
+          "settings": {
+            "collection": "difusores",
+            "photo": "diffuser"
+          }
+        },
+        "hotels": {
+          "type": "collection",
+          "settings": {
+            "collection": "coleccion-hotel",
+            "photo": "hotel"
+          }
+        },
+        "sprays": {
+          "type": "collection",
+          "settings": {
+            "collection": "aromatizante-en-espray",
+            "photo": "spray"
+          }
+        }
+      },
+      "block_order": [
+        "fragrances",
+        "diffusers",
+        "hotels",
+        "sprays"
+      ]
     }
   },
   "order": [
+    "nuuma_directory",
     "slideshow",
     "rich-text-0",
     "main",
