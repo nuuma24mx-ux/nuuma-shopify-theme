@@ -1,0 +1,7 @@
+{%- if request.locale.iso_code contains 'es' -%}
+  {%- case label -%}
+    {%- when 'Availability' -%}Disponibilidad
+    {%- when 'Price' -%}Precio
+    {%- else -%}{{ label | escape }}
+  {%- endcase -%}
+{%- else -%}{{ label | escape }}{%- endif -%}
