@@ -1,0 +1,123 @@
+{{ 'nuuma-footer.css' | asset_url | stylesheet_tag }}
+<div class="nu-footer">
+  <section class="nu-footer__newsletter" aria-labelledby="NuNewsletterTitle-{{ section.id }}">
+    <div class="nu-footer__container nu-footer__signup">
+      <div>
+        <p class="nu-footer__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h2 id="NuNewsletterTitle-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+        <p class="nu-footer__intro">{{ section.settings.description | escape }}</p>
+      </div>
+      <div>
+        {%- assign newsletter_id = 'NuNewsletter-' | append: section.id -%}
+        {% form 'customer', id: newsletter_id, class: 'nu-footer__form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <label for="NuEmail-{{ section.id }}">Correo electrónico</label>
+          <input id="NuEmail-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email | escape }}" placeholder="Tu correo electrónico" autocomplete="email" autocorrect="off" autocapitalize="off" required aria-required="true"
+            {% if form.errors %}aria-invalid="true" aria-describedby="NuEmailError-{{ section.id }}" autofocus{% elsif form.posted_successfully? %}aria-describedby="NuEmailSuccess-{{ section.id }}"{% endif %}>
+          <button type="submit" name="commit">Suscribirme</button>
+          {%- if form.errors -%}
+            <p class="nu-footer__message" id="NuEmailError-{{ section.id }}" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+          {%- endif -%}
+          {%- if form.posted_successfully? -%}
+            <p class="nu-footer__message" id="NuEmailSuccess-{{ section.id }}" role="status" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
+          {%- endif -%}
+        {% endform %}
+        {%- if shop.privacy_policy != blank -%}
+          <p class="nu-footer__privacy">Al suscribirte, aceptas nuestra <a href="{{ shop.privacy_policy.url }}">Política de privacidad</a>.</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+  <footer class="nu-footer__bottom">
+    <div class="nu-footer__container">
+      <div class="nu-footer__columns">
+        <div class="nu-footer__brand">
+          <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+            {%- if section.settings.logo != blank -%}
+              {{ section.settings.logo | image_url: width: 440 | image_tag: widths: '180, 220, 360, 440', sizes: '180px', loading: 'lazy', class: 'nu-footer__logo', alt: shop.name }}
+            {%- else -%}{{ shop.name | escape }}{%- endif -%}
+          </a>
+          <p>{{ section.settings.tagline | escape }}</p>
+          {%- if section.settings.show_social -%}
+            <div class="nu-footer__social">
+              {%- if settings.social_instagram_link != blank -%}<a href="{{ settings.social_instagram_link }}">Instagram</a>{%- endif -%}
+              {%- if settings.social_facebook_link != blank -%}<a href="{{ settings.social_facebook_link }}">Facebook</a>{%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="nu-footer__navigation">
+          <h2 class="nu-footer__desktop-heading">Explora</h2>
+          <details class="nu-footer__details" open>
+            <summary>Explora <span aria-hidden="true">+</span></summary>
+            <nav aria-label="Explora NUUMA"><ul>
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'explore_link' and block.settings.url != blank -%}
+                  <li {{ block.shopify_attributes }}><a href="{{ block.settings.url }}">{{ block.settings.label | escape }}</a></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul></nav>
+          </details>
+        </div>
+        <div class="nu-footer__navigation">
+          <h2 class="nu-footer__desktop-heading">Te ayudamos</h2>
+          <details class="nu-footer__details" open>
+            <summary>Te ayudamos <span aria-hidden="true">+</span></summary>
+            <nav aria-label="Ayuda"><ul>
+              {%- if section.settings.contact_url != blank -%}<li><a href="{{ section.settings.contact_url }}">Contacto</a></li>{%- endif -%}
+              {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">Envíos</a></li>{%- endif -%}
+              {%- if shop.refund_policy != blank -%}<li><a href="{{ shop.refund_policy.url }}">Devoluciones</a></li>{%- endif -%}
+            </ul></nav>
+          </details>
+        </div>
+        <div class="nu-footer__contact">
+          <h2>Hablemos</h2>
+          {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email | escape }}">{{ section.settings.email | escape }}</a>{%- endif -%}
+          {%- if section.settings.whatsapp_url != blank -%}<a href="{{ section.settings.whatsapp_url }}">WhatsApp {{ section.settings.whatsapp | escape }}</a>{%- endif -%}
+        </div>
+      </div>
+      {%- for block in section.blocks -%}{%- if block.type == '@app' -%}{% render block %}{%- endif -%}{%- endfor -%}
+      <div class="nu-footer__utilities">
+        {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}{{ shop | login_button: action: 'follow' }}{%- endif -%}
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <localization-form>{% form 'localization', id: 'NuFooterCountryForm', class: 'localization-form' %}<div><h2 class="caption-large" id="NuFooterCountryLabel">{{ 'localization.country_label' | t }}</h2>{% render 'country-localization', localPosition: 'NuFooterCountry' %}</div>{% endform %}</localization-form>
+        {%- endif -%}
+        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+          <localization-form>{% form 'localization', id: 'NuFooterLanguageForm', class: 'localization-form' %}<div><h2 class="caption-large" id="NuFooterLanguageLabel">{{ 'localization.language_label' | t }}</h2>{% render 'language-localization', localPosition: 'NuFooterLanguage' %}</div>{% endform %}</localization-form>
+        {%- endif -%}
+      </div>
+      <div class="nu-footer__legal">
+        <small>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</small>
+        <ul class="nu-footer__policies">
+          {%- for policy in shop.policies -%}{%- if policy != blank -%}<li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>{%- endif -%}{%- endfor -%}
+        </ul>
+        {%- if section.settings.payment_enable -%}<ul class="nu-footer__payments" aria-label="{{ 'sections.footer.payment' | t }}">{%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}</ul>{%- endif -%}
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="{{ 'nuuma-footer.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "NUUMA · Suscripción y pie",
+  "tag": "section",
+  "enabled_on": {"groups": ["footer"]},
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Antetítulo","default":"EL UNIVERSO NUUMA"},
+    {"type":"text","id":"heading","label":"Título","default":"Un aroma nuevo. Una nueva historia."},
+    {"type":"textarea","id":"description","label":"Descripción","default":"Recibe novedades, lanzamientos e inspiración para tus espacios."},
+    {"type":"image_picker","id":"logo","label":"Logotipo blanco"},
+    {"type":"text","id":"tagline","label":"Texto de marca","default":"Aromas que hacen hogar."},
+    {"type":"url","id":"contact_url","label":"Página de contacto"},
+    {"type":"text","id":"email","label":"Correo de contacto"},
+    {"type":"text","id":"whatsapp","label":"Número de WhatsApp"},
+    {"type":"url","id":"whatsapp_url","label":"Enlace de WhatsApp"},
+    {"type":"checkbox","id":"show_social","label":"Mostrar redes sociales","default":true},
+    {"type":"checkbox","id":"payment_enable","label":"Mostrar métodos de pago","default":true},
+    {"type":"checkbox","id":"enable_follow_on_shop","label":"Mostrar Seguir en Shop","default":true},
+    {"type":"checkbox","id":"enable_country_selector","label":"Mostrar selector de país","default":true},
+    {"type":"checkbox","id":"enable_language_selector","label":"Mostrar selector de idioma","default":true}
+  ],
+  "blocks":[{"type":"@app"},{"type":"explore_link","name":"Enlace de colección","settings":[{"type":"text","id":"label","label":"Texto"},{"type":"url","id":"url","label":"Enlace"}]}],
+  "presets":[{"name":"NUUMA · Suscripción y pie"}]
+}
+{% endschema %}

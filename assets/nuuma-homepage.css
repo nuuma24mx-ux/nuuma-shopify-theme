@@ -1,0 +1,119 @@
+/* Homepage only. Native product forms, drawers and application blocks stay intact. */
+body.nuuma-homepage {
+  --nu-font: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body-family: var(--nu-font);
+  --font-heading-family: var(--nu-font);
+  font-family: var(--nu-font);
+  background: #fff;
+  color: #171717;
+  letter-spacing: 0;
+}
+.nuuma-homepage .announcement-bar__message { font: 500 1.1rem/1.5 var(--nu-font); letter-spacing: .12em; }
+.nuuma-homepage .header-wrapper { background: #151515; color: #fff; }
+.nuuma-homepage .header__heading-link, .nuuma-homepage .header__icon, .nuuma-homepage .header__menu-item, .nuuma-homepage .header__active-menu-item { color: #fff; }
+.nuuma-homepage .header__menu-item { font-size: 1.15rem; letter-spacing: .025em; }
+.nuuma-homepage .header__menu-item span { text-decoration: none; }
+.nuuma-homepage .header__submenu .header__menu-item { color: rgb(var(--color-foreground)); }
+.nuuma-homepage .header__heading-logo-wrapper { max-width: 160px; }
+.nu-home { font-family: var(--nu-font); font-size: 1.5rem; line-height: 1.65; color: #171717; background: #fff; }
+.nu-home *, .nu-home *::before, .nu-home *::after { box-sizing: border-box; }
+.nu-home h1, .nu-home h2, .nu-home h3, .nu-home p { margin: 0; font-family: inherit; color: inherit; }
+.nu-home a { color: inherit; text-decoration: none; }
+.nu-home a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.nu-home__container { width: min(100% - 4rem, 132rem); margin-inline: auto; }
+.nu-home__photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+.nu-home__hero { position: relative; min-height: 66rem; isolation: isolate; display: flex; align-items: center; background: #1c1c1b; color: #fff; }
+.nu-home__hero > .nu-home__photo { position: absolute; inset: 0; z-index: -2; object-position: 70% center; }
+.nu-home__hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgba(0,0,0,.64),rgba(0,0,0,.14) 60%,transparent); }
+.nu-home__hero-content { width: min(100% - 4rem,132rem); margin: auto; padding-block: 7rem; }
+.nu-home__eyebrow { font-size: 1.05rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.nu-home__hero h1 { max-width: 64rem; margin: 2rem 0; font-size: clamp(3.8rem,4.6vw,6.7rem); line-height: 1.08; font-weight: 600; letter-spacing: -.045em; }
+.nu-home__intro { max-width: 43rem; font-size: 1.6rem; }
+.nu-home__actions { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 3.2rem; }
+.nu-home .nu-home__button { display: inline-flex; align-items: center; justify-content: center; min-height: 4.8rem; padding: 1.3rem 2.5rem; border: 1px solid #171717; background: #171717; color: #fff; font: 500 1.25rem/1.4 var(--nu-font); text-align: center; transition: background .2s, color .2s; }
+.nu-home .nu-home__button:hover { background: #383838; }
+.nu-home .nu-home__button--white { background: #fff; border-color: #fff; color: #171717; }
+.nu-home .nu-home__button--white:hover { background: #e7e7e7; border-color: #e7e7e7; }
+.nu-home .nu-home__button--outline { background: transparent; border-color: #fff; color: #fff; }
+.nu-home .nu-home__button--outline:hover { background: #fff; color: #171717; }
+.nu-home__featured { padding-block: 7.2rem; }
+.nu-home__section-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 3.2rem; }
+.nu-home h2 { font-size: clamp(2.8rem,3vw,4.3rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.18; }
+.nu-home__section-heading h2 { margin-top: 1rem; }
+.nu-home__text-link { display: inline-flex; align-items: center; gap: 1.6rem; min-height: 4.4rem; font-size: 1.2rem; }
+.nu-home__text-link:hover { opacity: .65; }
+.nu-home__products { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 3rem 1.5rem; padding: 0; margin: 0; list-style: none; }
+.nu-home__product { display: flex; flex-direction: column; min-width: 0; }
+.nu-home__product-image { display: block; position: relative; aspect-ratio: 1 / 1.08; background: #f6f6f5; margin-bottom: 1.8rem; }
+.nu-home__product-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.nu-home__product h3 { font-size: 1.3rem; font-weight: 500; letter-spacing: .02em; line-height: 1.5; }
+.nu-home__price { padding: .7rem 0 1.7rem; font-size: 1.25rem; }
+.nu-home__price span { color: #666; }
+.nu-home .nu-home__button--product { width: 100%; margin-top: auto; min-height: 4.4rem; padding: 1rem; background: #fff; color: #171717; border-color: #d2d2d2; }
+.nu-home .nu-home__button--product:hover { border-color: #171717; background: #171717; color: #fff; }
+.nu-home__badge { position: absolute; top: 1rem; left: 1rem; padding: .3rem 1rem; background: #fff; font-size: 1.1rem; }
+.nu-home__empty { padding: 4rem 2rem; border: 1px dashed #aaa; }
+.nu-home__hotel { display: grid; grid-template-columns: 1fr 1fr; background: #f5f5f3; }
+.nu-home__hotel-photo { min-height: 50rem; }
+.nu-home__hotel-content { padding: 6rem clamp(3rem,6vw,10rem); align-self: center; }
+.nu-home__hotel h2 { max-width: 46rem; margin-block: 1.8rem 2rem; }
+.nu-home__hotel-content > p:not(.nu-home__eyebrow) { max-width: 42rem; color: #535353; }
+.nu-home__hotel .nu-home__button { margin-top: 2.8rem; }
+.nu-home__categories { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; padding-block: 7.2rem; }
+.nu-home__category { position: relative; isolation: isolate; min-height: 38rem; overflow: hidden; display: flex; align-items: center; }
+.nu-home__category > .nu-home__photo { position: absolute; z-index: -2; inset: 0; object-position: 70% center; }
+.nu-home__category--dark { background: #222; color: #fff; }
+.nu-home__category--light { background: #f3f3f3; }
+.nu-home__category::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgba(0,0,0,.48),transparent 80%); }
+.nu-home__category--light::before { background: linear-gradient(90deg,rgba(255,255,255,.85),transparent 85%); }
+.nu-home__category-copy { padding: 3rem; max-width: 70%; }
+.nu-home__category h2 { margin: 1rem 0 2.5rem; }
+.nu-home__category .nu-home__button { padding-inline: 1.7rem; }
+.nu-home__trust { display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem; list-style: none; border-top: 1px solid #e5e5e5; padding: 3.2rem 0; }
+.nu-home__trust li { display: flex; align-items: center; justify-content: center; gap: 1.5rem; }
+.nu-home__trust svg { width: 2.8rem; height: 2.8rem; flex-shrink: 0; stroke-width: 1.2; }
+.nu-home__trust strong { display: block; font-size: 1.25rem; font-weight: 600; }
+.nu-home__trust span, .nu-home__trust a { font-size: 1.1rem; color: #555; }
+.nu-home__trust a { display: inline-flex; align-items: center; min-height: 4.4rem; }
+@media (min-width: 990px) {
+  .nuuma-homepage .header--top-center { grid-template-areas: 'heading navigation icons'; grid-template-columns: auto 1fr auto; column-gap: 3rem; padding-block: 1.8rem; }
+  .nuuma-homepage .header--top-center .header__heading { justify-self: start; }
+  .nuuma-homepage .header--top-center .header__inline-menu { margin-top: 0; justify-self: center; }
+  .nuuma-homepage .header--top-center > .header__search { display: none; }
+  .nuuma-homepage .header--top-center .header__icons .header__search { display: inline-flex; }
+  .nu-home__products { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 2.4rem; }
+}
+@media (max-width: 989px) {
+  .nu-home__hero { min-height: 60rem; }
+  .nu-home__hero h1 { max-width: 50rem; }
+  .nu-home__categories { grid-template-columns: 1fr; }
+  .nu-home__category { min-height: 40rem; }
+  .nu-home__trust { gap: 1.5rem; }
+}
+@media (max-width: 749px) {
+  .nu-home__hero { min-height: 68rem; align-items: end; }
+  .nu-home__hero > .nu-home__photo { height: 70%; object-position: 78% center; }
+  .nu-home__hero-shade { background: linear-gradient(0deg,#1c1c1b 24%,rgba(28,28,27,.96) 35%,rgba(28,28,27,.25) 67%,transparent); }
+  .nu-home__hero-content { padding: 32rem 0 3.4rem; }
+  .nu-home__hero h1 { font-size: clamp(3.4rem,9vw,4.8rem); max-width: 46rem; margin-block: 1.3rem; }
+  .nu-home__intro { font-size: 1.4rem; max-width: 36rem; }
+  .nu-home__actions { margin-top: 2.4rem; gap: 1rem; }
+  .nu-home__actions .nu-home__button { flex: 1; padding-inline: 1rem; }
+  .nu-home__featured { padding-block: 4.8rem; }
+  .nu-home__section-heading { display: block; margin-bottom: 2rem; }
+  .nu-home__section-heading .nu-home__text-link { margin-top: .8rem; }
+  .nu-home__products { gap: 2.8rem 1.2rem; }
+  .nu-home__product h3 { font-size: 1.15rem; }
+  .nu-home__price { font-size: 1.15rem; }
+  .nu-home__hotel { grid-template-columns: 1fr; }
+  .nu-home__hotel-photo { min-height: 0; aspect-ratio: 1.15; }
+  .nu-home__hotel-content { padding: 3.6rem 2rem 4rem; }
+  .nu-home__hotel h2 { max-width: 36rem; font-size: 3.4rem; }
+  .nu-home__categories { padding-block: 4.8rem 3.2rem; gap: 2rem; }
+  .nu-home__category { min-height: 34rem; }
+  .nu-home__category-copy { padding: 2rem; max-width: 75%; }
+  .nu-home__category h2 { font-size: 3rem; }
+  .nu-home__trust { grid-template-columns: 1fr; gap: 2rem; padding-block: 2.8rem; }
+  .nu-home__trust li { justify-content: start; }
+}
+@media (prefers-reduced-motion: reduce) { .nu-home .nu-home__button { transition: none; } }

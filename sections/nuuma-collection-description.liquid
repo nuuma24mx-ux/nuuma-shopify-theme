@@ -1,0 +1,10 @@
+{% if collection.description != blank %}
+  <div class="page-width nu-collection-description">
+    <details><summary>Más sobre {{ collection.title | escape }} <span aria-hidden="true">+</span></summary>
+      <div class="rte">{{ collection.description }}</div>
+    </details>
+  </div>
+{% endif %}
+{% schema %}
+{"name":"NUUMA · Detalle colección","enabled_on":{"templates":["collection"]},"settings":[],"presets":[{"name":"NUUMA · Detalle colección"}]}
+{% endschema %}
