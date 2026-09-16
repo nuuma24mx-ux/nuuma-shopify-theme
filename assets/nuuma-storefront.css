@@ -24,6 +24,8 @@ body.nuuma-storefront {
 .nuuma-storefront .announcement-bar { background:#fff; color:#171717; }
 .nuuma-storefront .announcement-bar__message { font-size:1.1rem; font-weight:400; letter-spacing:.08em; }
 .nuuma-storefront .page-width { max-width:140rem; }
+.nuuma-storefront .page-width--narrow { width:calc(100% - 4rem); max-width:90rem; margin-inline:auto; }
+.nuuma-storefront .contact.page-width--narrow { max-width:120rem; }
 .nuuma-storefront :is(.button,.shopify-challenge__button,.customer button) { border-radius:0; min-height:4.8rem; font-size:1.4rem; letter-spacing:0; }
 .nuuma-storefront .button:not(.button--secondary):not(.button--tertiary),.nuuma-storefront .customer button { --color-button:23,23,23; --color-button-text:255,255,255; }
 .nuuma-storefront .field__input,.nuuma-storefront .select__select,.nuuma-storefront .customer input { border-radius:0; font-size:1.6rem; }
@@ -61,6 +63,8 @@ body.nuuma-storefront {
 .nuuma-storefront .product__title h1 { font-size:clamp(2.8rem,2.7vw,4rem); }
 .nuuma-storefront .product__info-container .price { font-size:2.2rem; }
 .nuuma-storefront .product-form__input--pill input[type=radio]+label { border-radius:0; min-height:4.4rem; padding:1.2rem 1.6rem; font-size:1.35rem; letter-spacing:0; }
+.nuuma-storefront .product-form__input--pill input[type=radio]:checked+label { background:#171717; color:#fff; border-color:#171717; }
+.nuuma-storefront .product-form__submit { --color-button:23,23,23; --color-button-text:255,255,255; --alpha-button-background:1; }
 .nuuma-storefront .product__description { margin-top:3rem; padding-top:2.4rem; border-top:1px solid #ddd; font-size:1.5rem; line-height:1.8; }
 .nuuma-storefront .product__description h3,.nuuma-storefront .product__description h4 { font-size:1.8rem; line-height:1.5; }
 .nuuma-storefront .contact { max-width:120rem; }
@@ -79,6 +83,7 @@ body.nuuma-storefront {
  .nuuma-storefront .header--top-center { grid-template-columns:auto 1fr auto; grid-template-areas:'heading navigation icons'; }
  .nuuma-storefront .header--top-center .header__inline-menu { justify-self:center; }
  .nuuma-storefront .header--top-center > .header__search { display:none; }
+ .nuuma-storefront .header--top-center .header__icons .header__search { display:inline-flex; }
 }
 @media(max-width:749px) {
  .nuuma-storefront .header { padding-block:1.2rem; }
