@@ -1,0 +1,233 @@
+{% liquid
+  assign fragrances_link = section.settings.fragrances_link | default: '/collections/hoteles'
+  assign diffusers_link = section.settings.diffusers_link | default: '/collections/difusores'
+  assign hotel_link = section.settings.hotel_link | default: '/collections/coleccion-hotel'
+  assign spray_link = section.settings.spray_link | default: '/collections/aromatizante-en-espray'
+%}
+<div class="nu-home">
+  <section class="nu-home__hero" aria-labelledby="NuumaHero-{{ section.id }}">
+    {% render 'nuuma-home-image', name: 'hero', image: section.settings.hero_image, eager: true, sizes: '100vw', alt: 'Fragancia y difusor NUUMA en un espacio contemporáneo' %}
+    <div class="nu-home__hero-shade"></div>
+    <div class="nu-home__hero-content">
+      <p class="nu-home__eyebrow">{{ section.settings.hero_eyebrow | escape }}</p>
+      <h1 id="NuumaHero-{{ section.id }}">{{ section.settings.hero_heading | escape }}</h1>
+      <p class="nu-home__intro">{{ section.settings.hero_text | escape }}</p>
+      <div class="nu-home__actions">
+        <a class="nu-home__button nu-home__button--white" href="{{ fragrances_link }}">Comprar fragancias</a>
+        <a class="nu-home__button nu-home__button--outline" href="{{ diffusers_link }}">Ver difusores</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="nu-home__featured nu-home__container" aria-labelledby="NuumaFeatured-{{ section.id }}">
+    <div class="nu-home__section-heading">
+      <div><p class="nu-home__eyebrow">{{ section.settings.featured_eyebrow | escape }}</p><h2 id="NuumaFeatured-{{ section.id }}">{{ section.settings.featured_heading | escape }}</h2></div>
+      <a class="nu-home__text-link" href="{{ fragrances_link }}">Ver todas las fragancias <span aria-hidden="true">→</span></a>
+    </div>
+    <ul class="nu-home__products" role="list">
+      {% for block in section.blocks %}
+        {% assign featured_product = block.settings.product %}
+        {% if featured_product != blank %}
+          <li class="nu-home__product" {{ block.shopify_attributes }}>
+            <a class="nu-home__product-image" href="{{ featured_product.url }}" aria-label="{{ featured_product.title | escape }}">
+              {% if featured_product.featured_image %}
+                {{ featured_product.featured_image | image_url: width: 800 | image_tag: widths: '240, 400, 600, 800', sizes: '(min-width: 990px) 22vw, 46vw', loading: 'lazy' }}
+              {% endif %}
+              {% unless featured_product.available %}<span class="nu-home__badge">{{ 'products.product.sold_out' | t }}</span>{% endunless %}
+            </a>
+            <h3><a href="{{ featured_product.url }}">{{ featured_product.title | escape }}</a></h3>
+            <p class="nu-home__price">{% if featured_product.price_varies %}<span>Desde </span>{% endif %}{{ featured_product.price | money_with_currency }}</p>
+            <a class="nu-home__button nu-home__button--product" href="{{ featured_product.url }}">
+              {% if featured_product.available %}{% if featured_product.has_only_default_variant %}Ver producto{% else %}Elegir tamaño{% endif %}{% else %}Ver producto{% endif %}<span class="visually-hidden">: {{ featured_product.title | escape }}</span>
+            </a>
+          </li>
+        {% elsif request.design_mode %}
+          <li class="nu-home__empty" {{ block.shopify_attributes }}>Selecciona una fragancia en este bloque.</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="nu-home__hotel" aria-labelledby="NuumaHotel-{{ section.id }}">
+    <div class="nu-home__hotel-photo">{% render 'nuuma-home-image', name: 'hotel', image: section.settings.hotel_image, sizes: '(min-width: 750px) 50vw, 100vw', alt: 'Fragancia Palacio de NUUMA en un ambiente de hotel' %}</div>
+    <div class="nu-home__hotel-content">
+      <p class="nu-home__eyebrow">Hotel &amp; Boutiques</p>
+      <h2 id="NuumaHotel-{{ section.id }}">{{ section.settings.hotel_heading | escape }}</h2>
+      <p>{{ section.settings.hotel_text | escape }}</p>
+      <a class="nu-home__button" href="{{ hotel_link }}">Explorar la colección</a>
+    </div>
+  </section>
+
+  <div class="nu-home__categories nu-home__container">
+    <section class="nu-home__category nu-home__category--dark" aria-labelledby="NuumaDiffusers-{{ section.id }}">
+      {% render 'nuuma-home-image', name: 'diffuser', image: section.settings.diffuser_image, sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Difusor cilíndrico negro NUUMA' %}
+      <div class="nu-home__category-copy"><p class="nu-home__eyebrow">Encuentra el tuyo</p><h2 id="NuumaDiffusers-{{ section.id }}">Difusores</h2><a class="nu-home__button nu-home__button--white" href="{{ diffusers_link }}">Ver difusores</a></div>
+    </section>
+    <section class="nu-home__category nu-home__category--light" aria-labelledby="NuumaSpray-{{ section.id }}">
+      {% render 'nuuma-home-image', name: 'spray', image: section.settings.spray_image, sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Room spray Santal Maison de NUUMA sobre lino blanco' %}
+      <div class="nu-home__category-copy"><p class="nu-home__eyebrow">Un toque de aroma</p><h2 id="NuumaSpray-{{ section.id }}">Room spray</h2><a class="nu-home__button" href="{{ spray_link }}">Comprar room spray</a></div>
+    </section>
+  </div>
+
+  <ul class="nu-home__trust nu-home__container" role="list">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M2 5h12v12H2zM14 9h4l4 4v4h-8M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0"/></svg><div><strong>Envíos a todo México</strong><a href="{{ shop.shipping_policy.url }}">Consulta nuestra política de envío</a></div></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M6 15h4"/></svg><div><strong>Pago seguro</strong><span>Elige tu método al finalizar la compra</span></div></li>
+    {% if section.settings.whatsapp_link != blank %}<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M21 11.5a9 9 0 0 1-13 8L3 21l1.5-5A9 9 0 1 1 21 11.5Z"/><path d="M8 8c0 4 4 8 8 8M8 8l2-1M16 16l1-2"/></svg><div><strong>Estamos para ayudarte</strong><a href="{{ section.settings.whatsapp_link }}">Escríbenos por WhatsApp</a></div></li>{% endif %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "NUUMA · Inicio premium",
+  "tag": "section",
+  "class": "nuuma-home-section",
+  "limit": 1,
+  "enabled_on": {
+    "templates": [
+      "index"
+    ]
+  },
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Portada"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Fotografía de portada"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Antetítulo",
+      "default": "AROMAS QUE HACEN HOGAR"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Título",
+      "default": "Haz de tu espacio un lugar inolvidable."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Texto",
+      "default": "Descubre fragancias que transforman tus espacios y acompañan tus momentos."
+    },
+    {
+      "type": "url",
+      "id": "fragrances_link",
+      "label": "Colección de fragancias"
+    },
+    {
+      "type": "url",
+      "id": "diffusers_link",
+      "label": "Colección de difusores"
+    },
+    {
+      "type": "header",
+      "content": "Fragancias destacadas"
+    },
+    {
+      "type": "text",
+      "id": "featured_eyebrow",
+      "label": "Antetítulo",
+      "default": "ENCUENTRA TU AROMA"
+    },
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "Título",
+      "default": "Fragancias para recordar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Elige hasta cuatro productos en los bloques. Los nombres, fotos, precios y disponibilidad se obtienen de Shopify. Los botones abren el selector nativo de cada producto."
+    },
+    {
+      "type": "header",
+      "content": "Hotel & Boutiques"
+    },
+    {
+      "type": "image_picker",
+      "id": "hotel_image",
+      "label": "Fotografía"
+    },
+    {
+      "type": "text",
+      "id": "hotel_heading",
+      "label": "Título",
+      "default": "Ese aroma que quieres llevar a casa."
+    },
+    {
+      "type": "textarea",
+      "id": "hotel_text",
+      "label": "Texto",
+      "default": "Descubre nuestra colección de fragancias inspiradas en hoteles y boutiques."
+    },
+    {
+      "type": "url",
+      "id": "hotel_link",
+      "label": "Colección"
+    },
+    {
+      "type": "header",
+      "content": "Categorías"
+    },
+    {
+      "type": "image_picker",
+      "id": "diffuser_image",
+      "label": "Fotografía de difusor"
+    },
+    {
+      "type": "image_picker",
+      "id": "spray_image",
+      "label": "Fotografía de room spray"
+    },
+    {
+      "type": "url",
+      "id": "spray_link",
+      "label": "Colección de room spray"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "WhatsApp de atención"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Fragancia",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Producto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NUUMA · Inicio premium",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

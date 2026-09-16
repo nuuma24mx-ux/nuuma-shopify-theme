@@ -1,0 +1,24 @@
+<div class="page-width nu-directory">
+  <nav class="nu-breadcrumb" aria-label="Ruta de navegación"><a href="{{ routes.root_url }}">Inicio</a><span aria-hidden="true"> / </span>Colecciones</nav>
+  <h1>{{ section.settings.heading | escape }}</h1>
+  <p>{{ section.settings.intro | escape }}</p>
+  <ul class="nu-directory__grid" role="list">
+    {% for block in section.blocks %}
+      {% assign featured_collection = block.settings.collection %}
+      {% if featured_collection != blank %}
+        <li {{ block.shopify_attributes }}><a href="{{ featured_collection.url }}">
+          <div class="nu-directory__image">{% render 'nuuma-home-image', image: block.settings.image, name: block.settings.photo, alt: featured_collection.title, sizes: '(min-width: 750px) 50vw, 100vw' %}</div>
+          <h2>{{ featured_collection.title | escape }} <span aria-hidden="true">→</span></h2>
+        </a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% schema %}
+{
+"name":"NUUMA · Colecciones","enabled_on":{"templates":["list-collections"]},
+"settings":[{"type":"text","id":"heading","label":"Título","default":"Encuentra tu aroma."},{"type":"text","id":"intro","label":"Introducción","default":"Explora las colecciones NUUMA."}],
+"blocks":[{"type":"collection","name":"Colección","settings":[{"type":"collection","id":"collection","label":"Colección"},{"type":"image_picker","id":"image","label":"Fotografía"},{"type":"select","id":"photo","label":"Fotografía predeterminada","options":[{"value":"hero","label":"Fragancias"},{"value":"diffuser","label":"Difusores"},{"value":"hotel","label":"Hotel"},{"value":"spray","label":"Room spray"}],"default":"hero"}]}],
+"presets":[{"name":"NUUMA · Colecciones"}]
+}
+{% endschema %}

@@ -1,0 +1,96 @@
+/* Shared storefront presentation. Native Shopify forms, facets and drawers retain their behavior. */
+body.nuuma-storefront {
+ --nu-font:'Plus Jakarta Sans',system-ui,sans-serif;
+ --font-body-family:var(--nu-font); --font-heading-family:var(--nu-font);
+ --font-body-weight:400; --font-heading-weight:500;
+ --buttons-radius:0px; --buttons-radius-outset:0px; --inputs-radius:0px; --inputs-radius-outset:0px;
+ --variant-pills-radius:0px; --badge-corner-radius:0px;
+ font-family:var(--nu-font); font-weight:400; letter-spacing:0; background:#fff; color:#171717;
+}
+.nuuma-storefront h1,.nuuma-storefront h2,.nuuma-storefront h3 { font-family:var(--nu-font); color:inherit; }
+.nuuma-storefront h1,.nuuma-storefront .h1 { font-size:clamp(3.2rem,3.7vw,5rem); font-weight:500; letter-spacing:-.045em; line-height:1.15; }
+.nuuma-storefront h2,.nuuma-storefront .h2 { font-size:2.6rem; font-weight:500; letter-spacing:-.025em; }
+.nuuma-storefront h3,.nuuma-storefront .h3 { font-size:1.8rem; font-weight:500; letter-spacing:0; }
+.nuuma-storefront a,.nuuma-storefront .link { text-decoration:none; }
+.nuuma-storefront a:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+.nuuma-storefront .header-wrapper { background:#151515; color:#fff; }
+.nuuma-storefront .header { padding-block:1.6rem; }
+.nuuma-storefront .header__heading-logo-wrapper { max-width:160px; }
+.nuuma-storefront .header__menu-item,.nuuma-storefront .header__active-menu-item,.nuuma-storefront .header__icon,.nuuma-storefront .header__heading-link { color:#fff; }
+.nuuma-storefront .header__menu-item { font-size:1.25rem; letter-spacing:0; }
+.nuuma-storefront .header__menu-item span { text-decoration:none; }
+.nuuma-storefront .header__submenu,.nuuma-storefront .menu-drawer { background:#fff; color:#171717; }
+.nuuma-storefront .header__submenu .header__menu-item,.nuuma-storefront .menu-drawer__menu-item { color:#171717; }
+.nuuma-storefront .announcement-bar { background:#fff; color:#171717; }
+.nuuma-storefront .announcement-bar__message { font-size:1.1rem; font-weight:400; letter-spacing:.08em; }
+.nuuma-storefront .page-width { max-width:140rem; }
+.nuuma-storefront :is(.button,.shopify-challenge__button,.customer button) { border-radius:0; min-height:4.8rem; font-size:1.4rem; letter-spacing:0; }
+.nuuma-storefront .button:not(.button--secondary):not(.button--tertiary),.nuuma-storefront .customer button { --color-button:23,23,23; --color-button-text:255,255,255; }
+.nuuma-storefront .field__input,.nuuma-storefront .select__select,.nuuma-storefront .customer input { border-radius:0; font-size:1.6rem; }
+.nuuma-storefront .field__label { font-size:1.4rem; letter-spacing:0; }
+.nuuma-storefront .card { --border-radius:0px; --border-width:0px; --shadow-opacity:0; --image-padding:0rem; }
+.nuuma-storefront .card__inner { background:#f5f5f2; }
+.nuuma-storefront .card__heading { font-size:1.4rem; line-height:1.5; font-weight:500; }
+.nuuma-storefront .card__heading a { text-decoration:none; }
+.nuuma-storefront .card__information { padding:1.4rem 0 .8rem; }
+.nuuma-storefront .card-information .price { font-size:1.3rem; letter-spacing:0; }
+.nuuma-storefront .quick-add__submit { min-height:4.6rem; font-size:1.3rem; }
+.nuuma-storefront .badge { font-size:1.1rem; letter-spacing:0; border-radius:0; }
+.nuuma-storefront .collection-hero { background:#fff; color:#171717; padding:3.6rem 0 2.4rem; }
+.nuuma-storefront .collection-hero__title { margin:1.4rem 0; }
+.nu-breadcrumb { color:#666; font-size:1.2rem; margin-bottom:1.6rem; }
+.nu-breadcrumb a { color:inherit; }
+.nuuma-storefront .product-count__text,.nuuma-storefront .facets__heading,.nuuma-storefront .facet-filters__label,.nuuma-storefront .mobile-facets__heading { font-size:1.3rem; letter-spacing:0; font-weight:400; }
+.nuuma-storefront .facets__summary,.nuuma-storefront .facet-filters__sort,.nuuma-storefront .mobile-facets__open { font-size:1.3rem; }
+.nuuma-storefront .facets-container { padding-block:1.6rem 2.4rem; }
+.nuuma-storefront .product-grid { row-gap:3rem; }
+.nuuma-storefront .card__media img { object-fit:contain; }
+.nu-collection-description { padding-block:1rem 5rem; }
+.nu-collection-description details { border-block:1px solid #ddd; }
+.nu-collection-description summary { display:flex; justify-content:space-between; padding:2rem 0; cursor:pointer; min-height:4.8rem; }
+.nu-collection-description .rte { max-width:90rem; padding-bottom:2.5rem; line-height:1.8; }
+.nu-collection-description .rte h3 { font-size:1.6rem; line-height:1.7; font-weight:400; }
+.nu-directory { padding-block:4rem 6rem; }
+.nu-directory h1 { margin:1rem 0; }
+.nu-directory > p { color:#666; margin-bottom:3rem; }
+.nu-directory__grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3rem; list-style:none; padding:0; }
+.nu-directory__grid a { color:inherit; }
+.nu-directory__image { aspect-ratio:4/3; overflow:hidden; background:#f5f5f2; }
+.nu-directory__image img { display:block; width:100%; height:100%; object-fit:cover; }
+.nuuma-storefront .nu-directory__grid h2 { display:flex; justify-content:space-between; font-size:1.8rem; margin:1.5rem 0; }
+.nuuma-storefront .product__title h1 { font-size:clamp(2.8rem,2.7vw,4rem); }
+.nuuma-storefront .product__info-container .price { font-size:2.2rem; }
+.nuuma-storefront .product-form__input--pill input[type=radio]+label { border-radius:0; min-height:4.4rem; padding:1.2rem 1.6rem; font-size:1.35rem; letter-spacing:0; }
+.nuuma-storefront .product__description { margin-top:3rem; padding-top:2.4rem; border-top:1px solid #ddd; font-size:1.5rem; line-height:1.8; }
+.nuuma-storefront .product__description h3,.nuuma-storefront .product__description h4 { font-size:1.8rem; line-height:1.5; }
+.nuuma-storefront .contact { max-width:120rem; }
+.nu-contact-layout { display:grid; grid-template-columns:1fr 1.5fr; gap:6rem; }
+.nu-contact-intro h2 { margin:0 0 1.4rem; }
+.nu-contact-intro p { color:#666; }
+.nu-contact-intro a { display:block; color:inherit; padding:1rem 0; overflow-wrap:anywhere; }
+.nuuma-storefront .shopify-policy__container { max-width:90rem; padding:4rem 2rem 6rem; }
+.nuuma-storefront .shopify-policy__title { text-align:left; }
+.nuuma-storefront .shopify-policy__body { font-size:1.6rem; line-height:1.85; }
+.nuuma-storefront .rte a { text-decoration:none; }
+.nuuma-storefront .drawer { --color-background:255,255,255; --color-foreground:23,23,23; }
+.nuuma-storefront .cart-item__name { font-size:1.5rem; }
+.nuuma-storefront .totals__total,.nuuma-storefront .drawer__heading { font-size:2.2rem; }
+@media(min-width:990px) {
+ .nuuma-storefront .header--middle-center { grid-template-columns:auto 1fr auto; grid-template-areas:'heading navigation icons'; }
+ .nuuma-storefront .header--middle-center .header__inline-menu { justify-self:center; }
+ .nuuma-storefront .header--middle-center > .header__search { display:none; }
+}
+@media(max-width:749px) {
+ .nuuma-storefront .header { padding-block:1.2rem; }
+ .nuuma-storefront .header__heading-logo-wrapper { max-width:135px; }
+ .nuuma-storefront .collection-hero { padding:2.4rem 0 1rem; }
+ .nuuma-storefront h1,.nuuma-storefront .h1 { font-size:3.2rem; }
+ .nuuma-storefront .product-count__text { font-size:1.2rem; }
+ .nuuma-storefront .card__heading { font-size:1.25rem; }
+ .nuuma-storefront .quick-add__submit { font-size:1.2rem; padding-inline:.7rem; }
+ .nu-directory { padding-block:2.8rem 4rem; }
+ .nu-directory__grid { grid-template-columns:1fr; gap:2rem; }
+ .nu-contact-layout { grid-template-columns:1fr; gap:3rem; }
+ .nuuma-storefront .product__title h1 { font-size:2.8rem; }
+ .nuuma-storefront .shopify-policy__container { padding-top:2rem; }
+}
