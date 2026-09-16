@@ -73,7 +73,10 @@
     },
     "nuuma_directory": {
       "type": "nuuma-collections",
-      "settings": {},
+      "settings": {
+        "heading": "Encuentra tu aroma.",
+        "intro": "Explora las colecciones NUUMA."
+      },
       "blocks": {
         "fragrances": {
           "type": "collection",
