@@ -76,9 +76,9 @@ body.nuuma-storefront {
 .nuuma-storefront .cart-item__name { font-size:1.5rem; }
 .nuuma-storefront .totals__total,.nuuma-storefront .drawer__heading { font-size:2.2rem; }
 @media(min-width:990px) {
- .nuuma-storefront .header--middle-center { grid-template-columns:auto 1fr auto; grid-template-areas:'heading navigation icons'; }
- .nuuma-storefront .header--middle-center .header__inline-menu { justify-self:center; }
- .nuuma-storefront .header--middle-center > .header__search { display:none; }
+ .nuuma-storefront .header--top-center { grid-template-columns:auto 1fr auto; grid-template-areas:'heading navigation icons'; }
+ .nuuma-storefront .header--top-center .header__inline-menu { justify-self:center; }
+ .nuuma-storefront .header--top-center > .header__search { display:none; }
 }
 @media(max-width:749px) {
  .nuuma-storefront .header { padding-block:1.2rem; }
