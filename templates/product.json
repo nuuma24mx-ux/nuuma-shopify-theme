@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -12,10 +21,6 @@
         },
         "title": {
           "type": "title",
-          "settings": {}
-        },
-        "description": {
-          "type": "description",
           "settings": {}
         },
         "rating": {
@@ -44,8 +49,15 @@
             "show_gift_card_recipient": true
           }
         },
-        "trust_badges_bear_widget_jDNWyd": {
-          "type": "shopify://apps/trust-badges-bear/blocks/widget/163a9b59-0ec2-4cb7-bf5c-31408b4a9420",
+        "text_Cthgqz": {
+          "type": "text",
+          "settings": {
+            "text": "Envío gratis desde $1,000 MXN · Devoluciones dentro de 14 días",
+            "text_style": "body"
+          }
+        },
+        "description": {
+          "type": "description",
           "settings": {}
         },
         "share": {
@@ -63,9 +75,13 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "text_Cthgqz",
         "description",
-        "trust_badges_bear_widget_jDNWyd",
         "share"
+      ],
+      "custom_css": [
+        "h2 {font-size: 32px;}",
+        "@media screen and (max-width: 749px) {.product__media-list .product__media {padding-top: 200px !important; } .product__media-list .product__media img {object-fit: contain; } .product__title h1 {font-size: 25px; line-height: 1.15; } .product__info-container > * + * {margin: 8px 0; }}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -79,7 +95,7 @@
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 40,
+        "padding_top": 16,
         "padding_bottom": 60
       }
     },
