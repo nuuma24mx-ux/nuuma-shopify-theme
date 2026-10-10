@@ -1,0 +1,39 @@
+{{ 'nuuma-holiday-slide.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign holiday_link = section.settings.collection_link | default: '/collections/holiday-season'
+%}
+<section class="nu-holiday" aria-labelledby="NuumaHoliday-{{ section.id }}">
+  <a class="nu-holiday__art" href="{{ holiday_link }}" aria-label="Ver productos de la colección Holiday Season">
+    <img
+      src="{{ 'holiday-season-2027.webp' | asset_url }}"
+      alt="Holiday Season 2027 de Nuuma: un pueblo navideño ilustrado y aromas de temporada"
+      width="1483"
+      height="1061"
+      loading="lazy"
+    >
+  </a>
+  <div class="nu-holiday__content">
+    <div>
+      <p class="nu-holiday__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2 id="NuumaHoliday-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+      <p class="nu-holiday__text">{{ section.settings.text | escape }}</p>
+    </div>
+    <a class="nu-holiday__button" href="{{ holiday_link }}">{{ section.settings.button_label | escape }} <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Holiday Season slide",
+  "tag": "section",
+  "class": "nuuma-holiday-section",
+  "settings": [
+    {"type": "url", "id": "collection_link", "label": "Enlace de la colección"},
+    {"type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "HOLIDAY SEASON 2027"},
+    {"type": "text", "id": "heading", "label": "Título", "default": "Aromas para celebrar la temporada"},
+    {"type": "text", "id": "text", "label": "Descripción", "default": "Descubre las fragancias que hacen especiales tus momentos de celebración."},
+    {"type": "text", "id": "button_label", "label": "Texto del botón", "default": "Ver productos de temporada"}
+  ],
+  "presets": [{"name": "Holiday Season slide"}]
+}
+{% endschema %}
