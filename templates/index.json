@@ -428,10 +428,21 @@
         "spray_link": "/collections/aromatizante-en-espray",
         "whatsapp_link": "https://wa.me/523326689207"
       }
+    },
+    "nuuma_holiday_slide": {
+      "type": "nuuma-holiday-slide",
+      "settings": {
+        "collection_link": "/collections/holiday-season",
+        "eyebrow": "HOLIDAY SEASON 2027",
+        "heading": "Aromas para celebrar la temporada",
+        "text": "Descubre las fragancias que hacen especiales tus momentos de celebración.",
+        "button_label": "Ver productos de temporada"
+      }
     }
   },
   "order": [
     "nuuma_home",
+    "nuuma_holiday_slide",
     "slideshow",
     "image_with_text_wAdHF7",
     "image_with_text_qyXLFA",
